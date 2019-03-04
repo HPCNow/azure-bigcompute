@@ -4,21 +4,21 @@
     "parameters": {
         "dnsLabelPrefix": {
             "type": "string",
-            "defaultValue": "shellazure",
+            "defaultValue": "hpcnow",
             "metadata": {
                 "description": "Unique public dns prefix where the  node will be exposed"
             }
         },
         "adminUserName": {
             "type": "string",
-            "defaultValue": "azureuser",
+            "defaultValue": "hpcnow",
             "metadata": {
                 "description": "User name for the Virtual Machine. Pick a valid username otherwise there will be a BadRequest error."
             }
         },
         "ImagePublisher": {
             "type": "string",
-            "defaultValue": "Canonical",
+            "defaultValue": "openlogic",
             "allowedValues": [
                 "Canonical",
                 "openlogic",
@@ -30,7 +30,7 @@
         },
         "ImageOffer": {
             "type": "string",
-            "defaultValue": "UbuntuServer",
+            "defaultValue": "CentOS-HPC",
             "allowedValues": [
                 "CentOS-HPC",
                 "UbuntuServer",
@@ -44,14 +44,14 @@
         },
         "ImageSku": {
             "type": "string",
-            "defaultValue": "16.04-LTS",
+            "defaultValue": "7.4",
             "allowedValues": [
                 "6.5",
                 "7.1",
-                "16.04-LTS",
                 "7.2",
                 "7.3",
                 "7.4",
+                "16.04-LTS",
                 "42.2",
                 "12-SP2"
             ],
