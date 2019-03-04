@@ -59,6 +59,7 @@
                 "16.04-LTS",
                 "7.2",
                 "7.3",
+                "7.4",
                 "42.2",
                 "12-SP2"
             ],
@@ -463,7 +464,7 @@
         }
     }],
     "variables": {
-        "templatelink": "[concat('https://raw.githubusercontent.com/azure/azure-bigcompute/master/',parameters('singleOrCluster'),'azuredeploy.json')]"
+        "templatelink": "[concat('https://raw.githubusercontent.com/HPCNow/azure-bigcompute/master/',parameters('singleOrCluster'),'azuredeploy.json')]"
     },
     "outputs": {
         "result": {
