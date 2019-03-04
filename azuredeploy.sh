@@ -72,7 +72,7 @@ enable_kernel_update()
 		cd /etc && sed -i.bak -e '28d' yum.conf
 		cd /etc && sed -i '28i#exclude=kernel*' yum.conf
 
-	elif [ "$skuName" == "6.6" ] || [ "$skuName" == "7.2" ] || [ "$skuName" == "7.3" ]  ; then
+	elif [ "$skuName" == "6.6" ] || [ "$skuName" == "7.2" ] || [ "$skuName" == "7.3" ] || [ "$skuName" == "7.4" ]  ; then
                 echo "kernel update is enabled";
 
 	fi
@@ -85,7 +85,7 @@ disable_kernel_update()
 		cd /etc && sed -i.bak -e '28d' yum.conf
 		cd /etc && sed -i '28iexclude=kernel*' yum.conf
 
-	elif [ "$skuName" == "6.6" ] || [ "$skuName" == "7.2" ] || [ "$skuName" == "7.3" ]  ; then
+	elif [ "$skuName" == "6.6" ] || [ "$skuName" == "7.2" ] || [ "$skuName" == "7.3" ] || [ "$skuName" == "7.4" ] ; then
                 echo "No kernel to update";
 
 	fi
@@ -452,11 +452,11 @@ install_pkgs_all()
 
 	if [ "$skuName" == "6.5" ] || [ "$skuName" == "6.6" ] ; then
     		install_azure_cli
-	elif [ "$skuName" == "7.2" ] || [ "$skuName" == "7.1" ] || [ "$skuName" == "7.3" ] ; then
+	elif [ "$skuName" == "7.2" ] || [ "$skuName" == "7.1" ] || [ "$skuName" == "7.3" ] || [ "$skuName" == "7.4" ] ; then
 
-    		install_docker
+    		#install_docker
 
-    		install_docker_apps
+    		#install_docker_apps
 	fi
 
     install_ib
@@ -527,7 +527,7 @@ setup_hpc_user()
 		update-rc.d -f apparmor remove
 		apt-get -y remove apparmor
 
-	elif [ "$skuName" == "6.5" ] || [ "$skuName" == "6.6" ] || [ "$skuName" == "7.2" ] || [ "$skuName" == "7.1" ] || [ "$skuName" == "7.3" ] ; then
+	elif [ "$skuName" == "6.5" ] || [ "$skuName" == "6.6" ] || [ "$skuName" == "7.2" ] || [ "$skuName" == "7.1" ] || [ "$skuName" == "7.3" ] || [ "$skuName" == "7.4" ] ; then
 		    sed -i 's/enforcing/disabled/g' /etc/selinux/config
 		    setenforce permissive
 
@@ -1207,7 +1207,7 @@ chmod +x /etc/rc.d/rc.local
 		 ( sleep 15 ; reboot ) &
 		fi
                 
-	elif [ "$skuName" == "6.5" ] || [ "$skuName" == "6.6" ] || [ "$skuName" == "7.2" ] || [ "$skuName" == "7.1" ] || [ "$skuName" == "7.3" ] || [ "$skuName" == "42.2" ] || [ "$skuName" == "12-SP2" ] ; then
+	elif [ "$skuName" == "6.5" ] || [ "$skuName" == "6.6" ] || [ "$skuName" == "7.2" ] || [ "$skuName" == "7.1" ] || [ "$skuName" == "7.3" ] || [ "$skuName" == "7.4" ] || [ "$skuName" == "42.2" ] || [ "$skuName" == "12-SP2" ] ; then
 		install_pkgs_all
 		setup_shares
 		setup_hpc_user
@@ -1251,7 +1251,7 @@ chmod +x /etc/rc.d/rc.local
 		    if [ "$skuName" == "7.1" ] ; then		    
                     echo 'export PATH=/opt/intel/compilers_and_libraries_2016/linux/mpi/bin64:/usr/local/bin:/usr/local/sbin:$PATH' >>/etc/profile
 		    echo 'export PATH=/opt/intel/compilers_and_libraries_2016/linux/mpi/bin64:/usr/local/bin:/usr/local/sbin:$PATH' >>/root/.bash_profile
-		    elif [ "$skuName" == "7.3" ] ; then
+		    elif [ "$skuName" == "7.3" ] || [ "$skuName" == "7.4" ] ; then
                     echo 'export PATH=/opt/intel/compilers_and_libraries_2017/linux/mpi/bin64:/usr/local/bin:/usr/local/sbin:$PATH' >>/etc/profile
 		    echo 'export PATH=/opt/intel/compilers_and_libraries_2017/linux/mpi/bin64:/usr/local/bin:/usr/local/sbin:$PATH' >>/root/.bash_profile
 		    fi 
@@ -1274,7 +1274,7 @@ chmod +x /etc/rc.d/rc.local
 		    if [ "$skuName" == "7.1" ] ; then		    
                     echo 'export PATH=/opt/intel/compilers_and_libraries_2016/linux/mpi/bin64:/usr/local/bin:/usr/local/sbin:$PATH' >>/etc/profile
 		    echo 'export PATH=/opt/intel/compilers_and_libraries_2016/linux/mpi/bin64:/usr/local/bin:/usr/local/sbin:$PATH' >>/root/.bash_profile
-		    elif [ "$skuName" == "7.3" ] ; then
+		    elif [ "$skuName" == "7.3" ] || [ "$skuName" == "7.4" ] ; then
                     echo 'export PATH=/opt/intel/compilers_and_libraries_2017/linux/mpi/bin64:/usr/local/bin:/usr/local/sbin:$PATH' >>/etc/profile
 		    echo 'export PATH=/opt/intel/compilers_and_libraries_2017/linux/mpi/bin64:/usr/local/bin:/usr/local/sbin:$PATH' >>/root/.bash_profile
 		    fi 
@@ -1297,7 +1297,7 @@ chmod +x /etc/rc.d/rc.local
 		    if [ "$skuName" == "7.1" ] ; then		    
                     echo 'export PATH=/opt/intel/compilers_and_libraries_2016/linux/mpi/bin64:/usr/local/bin:/usr/local/sbin:$PATH' >>/etc/profile
 		    echo 'export PATH=/opt/intel/compilers_and_libraries_2016/linux/mpi/bin64:/usr/local/bin:/usr/local/sbin:$PATH' >>/root/.bash_profile
-		    elif [ "$skuName" == "7.3" ] ; then
+		    elif [ "$skuName" == "7.3" ] || [ "$skuName" == "7.4" ] ; then
                     echo 'export PATH=/opt/intel/compilers_and_libraries_2017/linux/mpi/bin64:/usr/local/bin:/usr/local/sbin:$PATH' >>/etc/profile
 		    echo 'export PATH=/opt/intel/compilers_and_libraries_2017/linux/mpi/bin64:/usr/local/bin:/usr/local/sbin:$PATH' >>/root/.bash_profile
 		    fi 
