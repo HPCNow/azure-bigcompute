@@ -75,7 +75,7 @@
         },
         "MountFolder": {
             "type": "string",
-            "defaultValue": "/data",
+            "defaultValue": "/scratch",
             "metadata": {
                 "description": "The Folder system to be auto-mounted."
             }
@@ -112,7 +112,7 @@
         },
         "HeadandWorkerNodeSize": {
             "type": "string",
-            "defaultValue": "Standard_NC24",
+            "defaultValue": "Standard_H16mR",
             "allowedValues": [
                 "Basic_A0",
                 "Basic_A1",
@@ -245,14 +245,14 @@
         },
         "DockerComposeVer": {
             "type": "string",
-            "defaultValue": "1.12.0",
+            "defaultValue": "1.23.2",
             "metadata": {
                 "description": "The Docker Compose Version"
             }
         },
         "DockerMachineVer": {
             "type": "string",
-            "defaultValue": "0.10.0",
+            "defaultValue": "18.06.3",
             "metadata": {
                 "description": "The docker-machine version"
             }
@@ -266,21 +266,21 @@
         },
         "MasterVMName": {
             "type": "string",
-            "defaultValue": "headN",
+            "defaultValue": "master",
             "metadata": {
                 "description": "The Name of the VM."
             }
         },
         "WorkerVMNamePrefix": {
             "type": "string",
-            "defaultValue": "compN",
+            "defaultValue": "node",
             "metadata": {
                 "description": "The Name Prefix of the worker(s) VM Nodes which whould be suffixed by the worker number."
             }
         },
         "NumDataDisks": {
             "type": "string",
-            "defaultValue": "32",
+            "defaultValue": "2",
             "allowedValues": [
                 "1",
                 "2",
@@ -354,7 +354,7 @@
         },
         "NVIDIADockerBinaryVersion": {
             "type": "string",
-            "defaultValue": "1.0.1",
+            "defaultValue": "2.0.3",
             "metadata": {
                 "description": "The Latest nvidia-docker binary version from https://github.com/NVIDIA/nvidia-docker/releases"
             }
