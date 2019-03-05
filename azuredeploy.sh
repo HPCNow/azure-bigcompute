@@ -570,10 +570,12 @@ setup_hpc_user()
         # Give hpc user access to data share
         chown -R $HPC_USER:$HPC_GROUP $SHARE_DATA
         
-        
     else
         useradd -c "HPC User" -g $HPC_GROUP -d $SHARE_HOME/$HPC_USER -s /bin/bash -u $HPC_UID $HPC_USER
     fi
+    #propagate SSH keys to root user
+    cp -pr $SHARE_HOME/$HPC_USER/.ssh /root/
+    chown -R /root/.ssh
 }
 
 # Sets all common environment variables and system parameters.
@@ -590,6 +592,7 @@ setup_env()
     echo "export I_MPI_DAPL_PROVIDER=ofa-v2-ib0" >> /etc/profile.d/mpi.sh
     echo "export I_MPI_DYNAMIC_CONNECTION=0" >> /etc/profile.d/mpi.sh
     source /opt/intel/compilers_and_libraries/linux/mpi/intel64/bin/mpivars.sh
+    sed -i 's|#PermitRootLogin yes|PermitRootLogin yes|g' /etc/ssh/sshd_config
 }
 
 
