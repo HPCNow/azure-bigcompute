@@ -573,9 +573,13 @@ setup_hpc_user()
     else
         useradd -c "HPC User" -g $HPC_GROUP -d $SHARE_HOME/$HPC_USER -s /bin/bash -u $HPC_UID $HPC_USER
     fi
+    
     #propagate SSH keys to root user
+    while [ ! -f $SHARE_HOME/$HPC_USER/.ssh/authorized_keys ]; do
+        sleep 2
+    done
     cp -pr $SHARE_HOME/$HPC_USER/.ssh /root/
-    chown -R /root/.ssh
+    chown -R root:root /root/.ssh
 }
 
 # Sets all common environment variables and system parameters.
