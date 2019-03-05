@@ -454,7 +454,7 @@ install_pkgs_all()
     		install_azure_cli
 	elif [ "$skuName" == "7.2" ] || [ "$skuName" == "7.1" ] || [ "$skuName" == "7.3" ] || [ "$skuName" == "7.4" ] ; then
 
-    		#install_docker
+    		install_docker
 
     		#install_docker_apps
 	fi
